@@ -1,0 +1,368 @@
+/* utility classes */
+.relative{
+    position: relative;
+}
+.contain-fluid{
+    display: flex;
+
+}
+.absolute{
+    position: absolute;
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}
+.none_display{
+    display: none;
+}
+
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    min-height: 100vh;
+}
+#navbar {
+    position: relative;
+    z-index: 9999; /* Số này có thể được điều chỉnh tùy theo nhu cầu của bạn */
+  }
+
+nav{
+margin-top: 0px;
+position: sticky;    
+width: 100%;
+flex-shrink: 0;
+background-color:rgba(217, 217, 217, 1);
+margin-bottom: 10px;
+box-shadow:0;
+/* box-shadow: h-shadow v-shadow blur spread color inset; 
+              (horizontal)  độ dài ngang,(vertical) độ dọc, độ mờ ,độ lớn của bóng, màu,bóng trong bóng ngoài */
+}
+/* gọi phần tử ul trong nav */
+nav ul{ 
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav l{
+    height: 50px;
+    padding:15px 20px;
+    margin-top: 10px;
+}
+nav a{
+    height: 100%;
+    
+    text-decoration:none ;
+    /* text-decoration: none; ko gach chan,ko dashed */
+}
+/* con trỏ chuột khi trỏ vào l */
+nav l{
+    height: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+nav l:hover{ 
+    
+    background-color: rgba(119, 112, 112, 1);
+    border-radius: 15px;
+}
+/* pseudo-class selector /tìm hiểu cái này/
+chọn phần tử đầu tiên l của nav
+đẩy các phần tử còn lại margin về bên phải của nav
+*/
+nav l:first-child{
+    margin-right: auto;
+}
+/* luôn ở vị trí khi scoll */
+.sidebar{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgb(255, 255, 255,0.2);
+    box-shadow: -10px 0 10px;
+    
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+   backdrop-filter: blur(10px);
+
+}
+/* reponsive */
+.menu-button{
+    display: none;
+}
+@media (max-width: 800px) {
+    .hideOnMobie{
+       display: none; 
+
+    }
+    .menu-button{
+        display: block;
+    }
+}
+@media (max-width: 400px){
+    .sidebar{
+        width: 100%;
+    }
+}
+/* tab menu */
+#content{
+    display: grid;
+    margin: 40px 32px 100px 32px;
+    grid-template-columns: 1fr 1fr;
+    
+    height: auto;
+    width: auto;
+}
+
+.tab-menu{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+.tab-menu .line{
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    border-radius: 15px;
+    background-color: rgb(0, 0, 0);
+    transition: all 0.2s ease;
+
+}
+.tab-item{
+    min-width: 80px;
+    min-width: 80px;
+    padding: 16px 20px 11px 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #7358a0;
+    background-color: #ffffff;
+    border-top-left-radius: 5px;
+    border-top-right-radius:5px ;
+    border-bottom: 5px solid transparent;
+    opacity: 0.6;
+    cursor:pointer;
+}
+.tab-item:hover{
+    opacity: 0.6;
+    background-color: rgba(255, 255, 255, 0.651);
+    border-color: rgba(194, 53, 100, 0.1);
+
+}
+.tab-item.active{
+    opacity: 1;
+}
+
+.tab-content{
+    padding: 28px 0;
+}
+.tab-panel{
+    display: none;
+}
+.tab-panel{
+    display: none;
+}
+.tab-panel.active{
+    display: block;
+}
+
+.img-slider {
+    display: grid;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
+
+}
+
+.img-slider-item{
+    width: 80%;
+    height: auto;
+    justify-self: center;
+    grid-row: 1;
+    grid-column: 1;
+    
+}
+
+.menu-content{
+    width: auto;
+    justify-self: center;
+ 
+    
+}
+
+
+
+@keyframes ImgTransit {
+    from{
+        opacity: 1;
+
+    }
+    to{
+        opacity: 0;
+    }
+}
+.ImgTransit{
+    animation: ImgTransit 5s  ease  infinite normal;
+}
+
+.menu-display{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    
+}
+.warn{
+    font-size: 12px;
+}
+
+.menu-display > input{
+    padding: 12px 12px;
+    outline-color: blue;
+
+}
+
+.bttn{
+    width: 100%;
+    height: auto;
+    color: rgb(255, 255, 255);
+    padding: 8px 142px;
+    margin-top: 40px;
+    background-color: black;
+}
+
+.message-box{
+    background-color:#8C8C8C ;
+    height: 100px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+/* footer */
+
+
+.footer {
+    margin-top: 5px;
+    background-color: black;
+    height: 100%;
+}
+
+
+.footer__logo{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+top: 14px;
+left: 14px;
+}
+
+.footer__body{
+    display: flex;
+    padding: 50px 80px 50px 153px;
+    justify-content: space-evenly;
+}
+.footer__embed{
+    margin-left: 14px;
+    justify-self: self-start;
+}
+.footer__embed-letter{
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.input__btn{
+display: flex;
+height: 43px;
+width: 70%;
+
+}
+.btn-sub{
+background-color: 
+rgba(217, 217, 217, 1);
+color: #8A8787;
+font-family: "Times New Roman";
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding: 10px 10px;
+border: 1px solid  rgba(217, 217, 217, 1);;
+
+}
+#email__input{
+border-radius: 0px;
+background-color: 
+rgba(217, 217, 217, 1);
+}
+.notifi__display{
+display: flex;
+.p_condition{
+padding-top: 50px;
+}
+}
+.footer__top-menu{
+display: block;
+background-color: black;
+color: white;
+}
+.btn-accordion{
+display: flex;
+background-color: black;
+color: white;
+width: 166.003px;
+border: 0;
+flex-direction: row;
+justify-content: space-between;
+cursor: pointer;
+outline: none;
+transition: 0.4s;
+}
+.active__footer, .btn-accordion:hover{
+background-color: #918080;
+border-radius: 10px;
+}
+ .menu-content-footer{
+padding: 0 18px;
+list-style: none;
+overflow: hidden;
+max-height:0;
+transition: max-height 0.2s ease-out;
+}
+
+.contact__content{
+display: flex;
+
+gap: 10px;
+color: white;
+}
+.contact__content > img{
+height: fit-content;
+padding: 10px 0;
+}
+.footer_bottom{
+display: flex;
+justify-content: center;
+color: white;
+}
