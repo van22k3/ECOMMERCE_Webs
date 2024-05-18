@@ -95,7 +95,7 @@ require 'config.php'
              <!-- catalog-panel -->
           <!-- catalog-panel -->
           <div class="catalog-panel">
-                <button class="panel-active">panel</button>
+                <button class="panel-active"><img src="./icon/tab.png" alt=""></button>
                 <ul class="panel-list">
                     <li class="panel-list-item" data-brand="All">All</li>
                     <li class="panel-list-item" data-brand="Automatic">Automatic</li>

@@ -222,12 +222,13 @@ nav l:first-child{
     margin-left: 58px !important;
 }
 .product-list-item{
-    border: 2px solid black;
+    border: 1px solid black;
     display: flex;
     position: relative;
     align-items: center;
     flex-direction: column;
     background-color: white;
+    border-radius: 14px;
 
 }
 .product-list-item img:hover{
@@ -269,7 +270,8 @@ nav l:first-child{
     font-weight: 400;
     line-height: normal;
     position: absolute;
-    right: 0;
+    right: 10px;
+    
 }
 #product-list-container .col-md-4{
     display: block;
@@ -328,6 +330,13 @@ nav l:first-child{
     
    
 }
+.panel-active{
+    border-radius: 15px;
+    background-color: white;
+    padding: 5px 15px;
+}
+
+
 .panel-list{
     width: 190px;
     height: 221px;

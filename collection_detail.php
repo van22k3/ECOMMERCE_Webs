@@ -79,17 +79,17 @@
         </div>
         <div class="layout">
         <div class="collection-layout">
-            <div class="img1"><img src="<?=$product['img1']?>" alt=""></div>
-            <div class="img2"><img src="<?=$product['img2']?>" alt=""></div>
-            <div class="img1"><img src="<?=$product['img3']?>" alt=""></div>
-            <div class="img2"><img src="<?=$product['img4']?>" alt=""></div>
+            <div class="img1"><img src="<?=$product['img1']?>" alt="#" onerror="this.classList.add('hidden');"></div>
+            <div class="img2"><img src="<?=$product['img2']?>" alt="#" onerror="this.classList.add('hidden');"></div>
+            <div class="img1"><img src="<?=$product['img3']?>" alt="#"onerror="this.classList.add('hidden');"></div>
+            <div class="img2"><img src="<?=$product['img4']?>" alt="#" onerror="this.classList.add('hidden');"></div>
         </div>
         <div class="img3"><img src="<?=$product['img5']?>" alt=""></div>
         </div>
         <div class="message">
-            <span>Pow!</span>
+            <span>Viété </span>
             <p>
-                Snoopy takes center stage as the legendary masked marvel on the blue sunray dial of our cherished M79. Featuring an automatic movement, a blue and red unidirectional bezel, luminous hands and dial markings, a stainless-steel bracelet with quick-release spring bars, and exhibition case back, this modern watch captures the bold spirit of an era that changed everything (and the spirit of your favorite beagle, of course).  
+            A watch brand conceived by three visionaries: Van, Chien, and Hoang. Our mission is to bring elegance and respect for time to your wrist. With Viété, time becomes a beautiful accessory. If you're looking for a sophisticated and affordable timepiece, Viété is the perfect choice. Established in 2024, we are dedicated to making every moment precious.
             </p>
         </div>
     </main>
