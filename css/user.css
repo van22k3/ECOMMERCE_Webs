@@ -209,6 +209,7 @@ nav l:first-child{
     display: flex;
     padding: 15px 15px;
     background-color: rgb(208, 208, 212);
+    border: 1px solid black;
 }
 .item_infor{
     display: flex;

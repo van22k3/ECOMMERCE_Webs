@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
     }else{
       if($username !=null && $email!=null && $password!=null){
-        $query = "INSERT INTO users (username,email,password) VALUES ('$username','$email','$password')";
+        $query = "INSERT INTO users (username,email,password,cart_products) VALUES ('$username','$email','$password','[]')";
         mysqli_query($conn,$query);
         echo "<script>alert('ACCOUNT CREATED')</script>";
         

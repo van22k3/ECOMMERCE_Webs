@@ -78,7 +78,7 @@ if(!empty($_SESSION['id'])){
                     </div>
                 </div>
                 <p class="price"><?=$product['price']?></p>
-                <a href="<?=$link?>?<?=$product['id']?>"><button class="btn-add">Add to Bag</button></a>
+                <a href="<?=$link?>?id=<?=$product['id']?>"><button class="btn-add">Add to Bag</button></a>
                 
             </div>
                 </div>
