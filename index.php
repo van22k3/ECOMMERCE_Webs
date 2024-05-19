@@ -11,6 +11,8 @@ if(!empty($_SESSION['id'])){
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +43,7 @@ if(!empty($_SESSION['id'])){
              <l class=""><a href=""><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
            
              <l class="hideOnMobie"><a href="<?=$link?>"><img src="./icon/User.svg" alt="User"></a></l>
-             <l class="hideOnMobie"><a href=""><img src="./icon/Bag.svg" alt="Bag"></a></l>
+             <l class="hideOnMobie"><a href="./collection.php"><img src="./icon/Bag.svg" alt="Bag"></a></l>
              <l class="menu-button" onclick=showSidebar()><img id="brand_logo" src="./icon/bee_menu.svg" alt="bee_menu"></a></l>
             </ul>
           </nav>
@@ -56,9 +58,10 @@ if(!empty($_SESSION['id'])){
           <div class="item1">
             <p>Elevate every moment with our exquisite collection of timepieces.</p>
           <p>-Vérité Chronograph- </p>
-          <button id="btn_shoppage"><img src="./icon/ShopNowbtn.png" alt=""></button>
+          
+          <button id="btn_shoppage"><a href="./collection.php"><img src="./icon/ShopNowbtn.png" alt=""></a></button>
           </div>
-          <audio  id="audio" controls  onclick="" src="./musicque/y2mate.com - Future Metro Boomin Kendrick Lamar  Like That Official Audio.mp3"></audio>
+          <audio  id="audio" controls  onclick="" src="./musicque/y2mate.com - Andree Right Hand  Em iu feat Wxrdie Bình Gold 2pillz Max Benderz Official Remix.mp3"></audio>
           <audio src=""></audio>
         </div>
         
@@ -87,11 +90,11 @@ if(!empty($_SESSION['id'])){
       </div>
   
       <!--carsousel content -->
-      <div id="carouselExampleIndicators" class="carousel slide" >
+      <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active none_display" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="none_display" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="none_display"  aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">  <!-- item1 -->
@@ -103,7 +106,7 @@ if(!empty($_SESSION['id'])){
                 </h2>
                 <div class="color">34 mm</div>
                 <div class="Product-color-panel"> Color: <span class="color-panel">Stainless Steel/Silver-Tone/Silver</span> </div>
-                <button class="add-btn">Add To Bag</button>
+                <a class="add-btn" href="collection_detail.php?id=9">Add To Bag</a>
                
                 <div class="price_regular">
                   <span class="price-item price-item--regular">7.977.500₫</span>
@@ -120,7 +123,7 @@ if(!empty($_SESSION['id'])){
                   </h2>
                   <div class="color">31 mm</div>
                   <div class="Product-color-panel"> Color: <span class="color-panel"> Black/Stainless Steel</span> </div>
-                  <button class="add-btn">Add To Bag</button>
+                  <a class="add-btn" href="collection_detail.php?id=3">Add To Bag</a>
                   
                   <div class="price_regular">
                     <span class="price-item price-item--regular">6.239.700₫</span>
@@ -130,18 +133,18 @@ if(!empty($_SESSION['id'])){
           </div>
           <div class="carousel-item"> <!-- item3 -->
             <div id="card-cotainer">
-              <img class="car-item" src="./img/TW2V42600.webp" class="d-flex w-auto " alt="...">
+              <img class="car-item" src="./img/TW2W47500.webp" class="d-flex w-auto " alt="...">
                 <div class="card-detail">
                   <h2 class="card-detail-title">
-                    Q Timex Chronograph 40mm Stainless Steel Bracelet Watch
+                  M79 Automatic x Peanuts 40mm Stainless Steel Bracelet Watch
                   </h2>
                   <div class="color">40 mm</div>
                   <div class="Product-color-panel"> Color: <span class="color-panel">Stainless Steel/Stainless Steel
                   </span> </div>
-                  <button class="add-btn">Add To Bag</button>
+                  <a class="add-btn" href="collection_detail.php?id=2">Add To Bag</a>
                  
                   <div class="price_regular">
-                    <span class="price-item price-item--regular">7.982.600₫</span>
+                    <span class="price-item price-item--regular">10.416.100₫</span>
                   </div>
                 </div>
               </div>
@@ -155,13 +158,13 @@ if(!empty($_SESSION['id'])){
         <div class="collection-title">This is Vérité</div>
         <ul class="collection-title-list">
           <li id="dmm" class="collection-list-item top-item" >
-              <a href=""><span>Automatic</span> <span class="arrow"><img src="./icon/mingcute_arrow-up-fill.png" alt=""></span></a>
+              <a href="./collection.php"><span>Automatic</span> <span class="arrow"><img src="./icon/mingcute_arrow-up-fill.png" alt=""></span></a>
           </li>
           <li class="collection-list-item  second-item" onmouseover="hoverEffect()" onmouseout="normalHover()">
-              <a href=""><span>Digital</span><span class="arrow"><img src="./icon/mingcute_arrow-up-fill.png" alt=""></span></a>
+              <a href="./collection.php"><span>Digital</span><span class="arrow"><img src="./icon/mingcute_arrow-up-fill.png" alt=""></span></a>
           </li>
           <li class="collection-list-item third-item" onmouseover="hoverLast()" onmouseout="NormalLast()">
-              <a href=""><span>Vintage Inspired</span><span class="arrow"><img src="./icon/mingcute_arrow-up-fill.png" alt=""></span></a>
+              <a href="./collection.php"><span>Vintage Inspired</span><span class="arrow"><img src="./icon/mingcute_arrow-up-fill.png" alt=""></span></a>
           </li>
       </ul>
       
@@ -177,9 +180,12 @@ if(!empty($_SESSION['id'])){
       <!-- frame 5 -->
         <div class="feature-block" style="background-image: url('./img/ezgif.com-video-to-gif-converter.gif');"> 
           <div class="frame5-card">
+          <a href="collection_detail.php?id=8">
             <div class="frame5-card-img">
+                
               <img src="./img/TW2W51400.webp" alt="">
             </div>
+            </a>
             <div class="frame5-card-detail">
               <span class="frame5-card-detail-title">Vétiré Chronograph 40mm leather StrapWatch</span>
               <span class="frame5-card-detail-content">40mm | 2 Colors</span>

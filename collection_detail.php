@@ -1,5 +1,13 @@
 <?php
+session_start();
   require 'config.php';
+  $link="";
+
+if(!empty($_SESSION['id'])){
+    $link = 'user.php';
+}else{
+    $link = 'login.php';
+}
   if(isset($_GET['id'])){
     $product_id =$_GET['id'];
     $sql = "SELECT * FROM products WHERE id = $product_id";
@@ -35,10 +43,10 @@
             <l><a href=""><img src="./icon/Frame 1.png" alt=""></a></l>
            </ul>
            <ul >
-             <l class=""><a href="./index.html"><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
-             <l class="hideOnMobie"><a href=""><img src="./icon/Search.svg" alt="Search"></a></l>
-             <l class="hideOnMobie"><a href="./login.html"><img src="./icon/User.svg" alt="User"></a></l>
-             <l class="hideOnMobie"><a href=""><img src="./icon/Bag.svg" alt="Bag"></a></l>
+             <l class=""><a href="./index.php"><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
+            
+             <l class="hideOnMobie"><a href="<?=$link?>"><img src="./icon/User.svg" alt="User"></a></l>
+             <l class="hideOnMobie"><a href="./collection.php"><img src="./icon/Bag.svg" alt="Bag"></a></l>
              <l class="menu-button" onclick=showSidebar()><img id="brand_logo" src="./icon/bee_menu.svg" alt="bee_menu"></a></l>
             </ul>
           </nav>
@@ -55,8 +63,8 @@
                 <div id="collection-content">
                     <div class="content-header">
                             <ol class="breadcrumb" style="background-color: white;">
-                              <li class="breadcrumb-item active" aria-current="page"><a href="./index.html">Home</a></li>
-                              <li class="breadcrumb-item " aria-current="page"><a href="./collection.html">Vérité collection</a></li>
+                              <li class="breadcrumb-item active" aria-current="page"><a href="./index.php">Home</a></li>
+                              <li class="breadcrumb-item " aria-current="page"><a href="./collection.php">Vérité collection</a></li>
                             </ol>
                     </div>
                 </div>
@@ -70,7 +78,8 @@
                     </div>
                 </div>
                 <p class="price"><?=$product['price']?></p>
-                <button class="btn-add">Add to Bag</button>
+                <a href="<?=$link?>?<?=$product['id']?>"><button class="btn-add">Add to Bag</button></a>
+                
             </div>
                 </div>
             

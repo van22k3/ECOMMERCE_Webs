@@ -277,12 +277,25 @@ line-height: normal;
     justify-self: center;
     margin-bottom: 20px;
     width: 100%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  .add-btn {
+    text-decoration: none;
+    color:black;
+    
+  }
+
   .add-btn:hover{
     background-color: black;
     color: #FFF;
+
    
   }
+  
+
   .add-btn:hover ~ * {
     opacity: 0.5; /* hoặc sử dụng filter: opacity(50%); */
 }

@@ -1,5 +1,13 @@
 <?php
-require 'config.php'
+require 'config.php';
+session_start();
+$link="";
+
+if(!empty($_SESSION['id'])){
+    $link = 'user.php';
+}else{
+    $link = 'login.php';
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +36,10 @@ require 'config.php'
                   <l><a href=""><img src="./icon/Frame 1.png" alt=""></a></l>
                  </ul>
                  <ul >
-                   <l class=""><a href=""><a href="./index.html"><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
-                   <l class="hideOnMobie"><a href=""><img src="./icon/Search.svg" alt="Search"></a></l>
-                   <l class="hideOnMobie"><a href="./login.html"><img src="./icon/User.svg" alt="User"></a></l>
-                   <l class="hideOnMobie"><a href="./collection.html"><img src="./icon/Bag.svg" alt="Bag"></a></l>
+                   <l class=""><a href=""><a href="./index.php"><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
+                  
+                   <l class="hideOnMobie"><a href="<?=$link?>"><img src="./icon/User.svg" alt="User"></a></l>
+                   <l class="hideOnMobie"><a href="./collection.php"><img src="./icon/Bag.svg" alt="Bag"></a></l>
                    <l class="menu-button" onclick=showSidebar()><img id="brand_logo" src="./icon/bee_menu.svg" alt="bee_menu"></a></l>
                   </ul>
                 </nav>
@@ -43,8 +51,8 @@ require 'config.php'
                 <div class="content-header">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb" style="background-color: white;">
-                          <li class="breadcrumb-item active" aria-current="page"><a href="./index.html">Home</a></li>
-                          <li class="breadcrumb-item " aria-current="page" ><a href="">Vérité collection</a></li>
+                          <li class="breadcrumb-item active" aria-current="page"><a href="./index.php">Home</a></li>
+                          <li class="breadcrumb-item " aria-current="page" ><a href="./collection.php">Vérité collection</a></li>
                         </ol>
                       </nav>
                     <div class="title-header">VÉRITÉ Featured</div>

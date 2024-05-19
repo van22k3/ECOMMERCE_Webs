@@ -1,33 +1,14 @@
 <?php
 session_start(); // Bắt đầu session
-require 'config.php';
+$link="";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login_email = $_POST['acs-email']; 
-    $login_password = $_POST['password'];
-
-    $conn = new mysqli('localhost', 'root', '', 'project_ecommerce');
-
-    if ($conn->connect_error) {
-        die("Kết nối thất bại: " . $conn->connect_error);
-    }
-
-    $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$login_email'");
-    $row = mysqli_fetch_assoc($result);
-
-    if (mysqli_num_rows($result) > 0) {
-        if ($login_password == $row['password']) {
-            $_SESSION["login"] = true;
-            $_SESSION["id"] = $row['id'];
-            header("Location: user.php");
-            exit();
-        } else {
-            echo "<script>alert('WRONG PASSWORD')</script>";
-        }
-    } else {
-        echo "<script>alert('EMAIL NOT FOUND')</script>";
-    }
+if(!empty($_SESSION['id'])){
+    $link = 'user.php';
+    header("location: user.php");
+}else{
+    $link = 'login.php';
 }
+require 'config.php';
 
 ?>
 
@@ -43,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
 </head>
 <body>
+<script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 <script>
         document.addEventListener('DOMContentLoaded', () => {
             const signin = document.getElementById('SignIn');
@@ -140,10 +122,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <l><a href=""><img src="./icon/Frame 1.png" alt=""></a></l>
                  </ul>
                  <ul >
-                   <l class=""><a href=""><a href="./index.html"><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
-                   <l class="hideOnMobie"><a href=""><img src="./icon/Search.svg" alt="Search"></a></l>
-                   <l class="hideOnMobie"><a href="./login.html"><img src="./icon/User.svg" alt="User"></a></l>
-                   <l class="hideOnMobie"><a href=""><img src="./icon/Bag.svg" alt="Bag"></a></l>
+                   <l class=""><a href=""><a href="./index.php"><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
+                 
+                   <l class="hideOnMobie"><a href="<?=$link?>"><img src="./icon/User.svg" alt="User"></a></l>
+                   <l class="hideOnMobie"><a href="./collection.php"><img src="./icon/Bag.svg" alt="Bag"></a></l>
                    <l class="menu-button" onclick=showSidebar()><img id="brand_logo" src="./icon/bee_menu.svg" alt="bee_menu"></a></l>
                   </ul>
                 </nav>
@@ -153,13 +135,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            
              <div class="menu-content">
         
-             <p class="result none_display "><?php if($result->num_rows>0){
-                  echo 'username or email had been taken';
-                
-             }else{
-                echo "";
-
-             } ?></p>
         
               <div class="tab-menu">
                 <div class="tab-item active">
@@ -172,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </div>
               <div class="tab-content">
                 <div class="tab-panel active">
-                  <form action="" method="POST">
+                  <form action="dangnhap.php" method="POST">
                   <div class="email-container menu-display">
                     <p>*Continue with your account</p>
                     <input type="text" name="acs-email" id="email" placeholder="Email">
@@ -184,11 +159,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p class="warn none_display">Please fill all content</p>
                   </div>
                   <button type="submit" class="bttn " id="SignIn">COUNTINUE</button>
-                
+                  </form>
                   <div class="message-box">Please log in to extend your access time. <br> Receive promotions and updates on the latest products from Vérité.</div>
                 </div>
                 <div class="tab-panel">
-                   
+                   <form action="dangky.php" method="post">
                   <div class="SignUp-container">
                     <div class="Username menu-display">
                      <p>*Username</p>
@@ -213,19 +188,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button  class="bttn" id="SignUp" >SIGN UP</button>
                   </div>
                 </div>
-
+                </form>
               </div>
              </div>
-             </form>
+             
                 
 
                 <div class="img-slider">
-                  <img  class="img-slider-item first" src="./img/xGucci-ladies-watches_1.jpg.pagespeed.ic.LKgda_0jfD 1.png" alt="" >
-                  <img  class="img-slider-item first" src="./img/men_img.png" alt="" >
-
+                  <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                      <img src="./img/mengucci.png "class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="1000">
+                      <img src="./img/xGucci-ladies-watches_1.jpg.pagespeed.ic.LKgda_0jfD 1.png" class="d-block w-100" alt="...">
+                    </div>
+                    
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
-
-
+              </div>
+              <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+              
+              
             </div>
             <script src="./js/login.js"></script>
             <script>

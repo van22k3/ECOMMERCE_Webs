@@ -1,6 +1,16 @@
 <?php
-
 require 'config.php';
+session_start();
+$link="";
+
+if(!empty($_SESSION['id'])){
+    $link = 'user.php';
+    header("location: user.php");
+}else{
+    $link = 'login.php';
+}
+
+
   $warn=" ";
   $stmt;
   $result;
@@ -18,20 +28,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Kết nối thất bại: " . $conn->connect_error);
     }
   
-    $result = mysqli_query($conn,"SELECT * FROM users WHERE email = '$login_email'");
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$login_email'");
     $row = mysqli_fetch_assoc($result);
-    if(mysqli_num_rows($result) > 0){
-      if($login_password==$row['password']){
-        $_SESSION["login"] = true;
-        $_SESSION["id"] = $row['id'];
-        header("Location: user.php");
-        echo 'dang nhap thanh cong';
-      }else{
-        echo "<script>alert('WRONG PASSWORD PLS GET BACK')</script>";
-      }
-    }else{
-        echo "<script>alert('ACCOUNT NOT EXITED PLS GET BACK')</script>";
+
+    if (mysqli_num_rows($result) > 0) {
+        if ($login_password == $row['password']) {
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $row['id'];
+            header("Location: user.php");
+            exit();
+        } else {
+            echo "<script>alert('WRONG PASSWORD')</script>";
+        }
+    } else {
+        echo "<script>alert('EMAIL NOT FOUND')</script>";
     }
 }
 
 ?>
+
+<html>
+
+<a href="<?=$link?>">GET BACK</a>
+</html>

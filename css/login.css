@@ -197,7 +197,11 @@ nav l:first-child{
     justify-self: center;
     grid-row: 1;
     grid-column: 1;
+   
+}
+.carousel-item{
     
+    overflow: hidden;
 }
 
 .menu-content{
