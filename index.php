@@ -1,8 +1,13 @@
 <?php
  require 'config.php';
 session_start();
+$link="";
 
-
+if(!empty($_SESSION['id'])){
+    $link = 'user.php';
+}else{
+    $link = 'login.php';
+}
 ?>
 
 
@@ -28,14 +33,14 @@ session_start();
            <ul class="sidebar">
             <l onclick=hideSidebar() ><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
             <l><a href=""><img src="./icon/Search.svg" alt="Search"></a></l>
-            <l><a href="./login.html"><img src="./icon/User.svg" alt="User"></a></l>
+            <l><a href=""><img src="./icon/User.svg" alt="User"></a></l>
             <l><a href=""><img src="./icon/Bag.svg" alt="Bag"></a></l>
             <l><a href=""><img src="./icon/Frame 1.png" alt=""></a></l>
            </ul>
            <ul >
              <l class=""><a href=""><img src="./icon/Vérité.svg" alt="Brand_name"></a></l>
            
-             <l class="hideOnMobie"><a href="./login.html"><img src="./icon/User.svg" alt="User"></a></l>
+             <l class="hideOnMobie"><a href="<?=$link?>"><img src="./icon/User.svg" alt="User"></a></l>
              <l class="hideOnMobie"><a href=""><img src="./icon/Bag.svg" alt="Bag"></a></l>
              <l class="menu-button" onclick=showSidebar()><img id="brand_logo" src="./icon/bee_menu.svg" alt="bee_menu"></a></l>
             </ul>
