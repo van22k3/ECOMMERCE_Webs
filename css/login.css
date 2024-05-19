@@ -366,3 +366,22 @@ display: flex;
 justify-content: center;
 color: white;
 }
+/* check */
+.warn{
+    font-size: 20px;
+    color: red;
+}
+
+.password-error{
+    font-size: 20px;
+    color: red;
+}
+.account-exited{
+    margin-top: 5px;
+    font-size: 20px;
+    color: rgba(255, 0, 0, 0.589);
+}
+
+.result{
+    color: blue;
+}

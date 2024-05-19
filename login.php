@@ -1,3 +1,36 @@
+<?php
+session_start(); // Bắt đầu session
+require 'config.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $login_email = $_POST['acs-email']; 
+    $login_password = $_POST['password'];
+
+    $conn = new mysqli('localhost', 'root', '', 'project_ecommerce');
+
+    if ($conn->connect_error) {
+        die("Kết nối thất bại: " . $conn->connect_error);
+    }
+
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$login_email'");
+    $row = mysqli_fetch_assoc($result);
+
+    if (mysqli_num_rows($result) > 0) {
+        if ($login_password == $row['password']) {
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $row['id'];
+            header("Location: user.php");
+            exit();
+        } else {
+            echo "<script>alert('WRONG PASSWORD')</script>";
+        }
+    } else {
+        echo "<script>alert('EMAIL NOT FOUND')</script>";
+    }
+}
+
+?>
+
 
 
 <!DOCTYPE html>
@@ -10,6 +43,86 @@
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
 </head>
 <body>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const signin = document.getElementById('SignIn');
+            const signup = document.getElementById('SignUp');
+
+            signin.addEventListener('click', function(event){
+                const email = document.querySelector('.menu-display #email');
+                const password = document.querySelector('.menu-display #password');
+                const warnmail = document.querySelector('.email-container .warn');
+                const passmail = document.querySelector('.password-container .warn');
+                
+                let valid = true;
+
+                if(email.value.length < 8){
+                    warnmail.classList.remove('none_display');
+                    valid = false;
+                } else {
+                    warnmail.classList.add('none_display');
+                }
+
+                if(email.value === "" || password.value === ""){
+                    passmail.classList.remove('none_display');
+                    valid = false;
+                } else {
+                    passmail.classList.add('none_display');
+                    
+                }
+                 
+                if (!valid) {
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+
+            signup.addEventListener('click', function(event){
+                const inputall = document.querySelectorAll('.SignUp-container .menu-display input');
+                const signupwarn = document.querySelector('.re-eneterpass .warn');
+                const password = document.getElementById('rq-password');
+                const re_password = document.getElementById('re-password');
+                const passworderror = document.querySelector('.password-error');
+              
+                let valid = true;
+
+                inputall.forEach(element => {
+                    if(element.value === ""){
+                        signupwarn.classList.remove('none_display');
+                        valid = false;
+                    } else {
+                        signupwarn.classList.add('none_display');
+                    }
+                });
+
+                if(re_password.value !== password.value){
+                    passworderror.classList.remove('none_display');
+                    valid = false;
+                } else {
+                    passworderror.classList.add('none_display');
+                }
+                
+                inputall.forEach(element => {
+                    if(element.value === ""){
+                        signupwarn.classList.remove('none_display');
+                        valid = false;
+                    } else {
+                        signupwarn.classList.add('none_display');
+                    }
+                });
+                
+             
+
+
+                if (!valid) {
+                    event.preventDefault(); // Prevent form submission
+                   
+                }
+                if(valid){
+                  document.querySelector('.result').classList.remove('none_display');
+                  }
+            });
+        });
+    </script>
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/main.js"></script>
    
@@ -37,7 +150,17 @@
                </div>
             </header>
             <div id="content">
+           
              <div class="menu-content">
+        
+             <p class="result none_display "><?php if($result->num_rows>0){
+                  echo 'username or email had been taken';
+                
+             }else{
+                echo "";
+
+             } ?></p>
+        
               <div class="tab-menu">
                 <div class="tab-item active">
                     <span class="menu-title">Login</span>
@@ -49,9 +172,10 @@
               </div>
               <div class="tab-content">
                 <div class="tab-panel active">
+                  <form action="" method="POST">
                   <div class="email-container menu-display">
                     <p>*Continue with your account</p>
-                    <input type="text" name="email" id="email" placeholder="Email">
+                    <input type="text" name="acs-email" id="email" placeholder="Email">
                     <p class="warn none_display">please enter valid email address</p>
                   </div>
                   <div class="password-container menu-display">
@@ -59,38 +183,40 @@
                     <input type="password" name="password" id="password" placeholder="Password">
                     <p class="warn none_display">Please fill all content</p>
                   </div>
-                  <button class="bttn " id="SignIn">COUNTINUE</button>
+                  <button type="submit" class="bttn " id="SignIn">COUNTINUE</button>
+                
                   <div class="message-box">Please log in to extend your access time. <br> Receive promotions and updates on the latest products from Vérité.</div>
                 </div>
                 <div class="tab-panel">
+                   
                   <div class="SignUp-container">
                     <div class="Username menu-display">
                      <p>*Username</p>
-                      <input type="text" name="username" id="username" placeholder="Username">
+                      <input type="text" name="username" id="username" placeholder="Username"  value="">
                     </div>
                     <div class="email-container menu-display">
                       <p>*Email Address</p>
-                    <input type="text" name="email" id="rq-email" placeholder="Email ">
+                    <input type="text" name="email" id="rq-email" placeholder="Email"   value="">
                     </div>
                     <div class="password-container menu-display">
                       <p>*Password</p>
-                      <input type="password" name="password" id="rq-password" placeholder="Password">
+                      <input type="password" name="rq-password" id="rq-password" placeholder="Password"   value="">
                     </div>
                     <div class="re-eneterpass menu-display">
                       <p>*Re-enter Password</p>
-                      <input type="password" name="password" id="re-password" placeholder="Password">
+                      <input type="password" name="re-password" id="re-password" placeholder="Password"   value="">
                       <p class="password-error none_display ">Please to check the same password</p>
                       <p class="warn none_display">Please fill all content</p>
+                      
                     </div>
-                  
                     
-                    <button class="bttn " id="SignUp">SIGN UP</button>
-                    <p class="account-exited">Username or Address had been taken</p>
+                    <button  class="bttn" id="SignUp" >SIGN UP</button>
                   </div>
                 </div>
-              
+
               </div>
              </div>
+             </form>
                 
 
                 <div class="img-slider">
